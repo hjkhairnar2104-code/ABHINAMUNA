@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: smartev-backend
+  
+  datasource:
+    url: jdbc:postgresql://ep-quiet-poetry-b5k9zebc.c-7.us-east-2.aws.neon.tech:5432/neondb?sslmode=require
+    username: neondb_owner
+    password: npg_zTcHp2ZF4DLS
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+      idle-timeout: 30000
+      max-lifetime: 600000
+      keepalive-time: 30000
+      connection-timeout: 30000
+      isolate-internal-queries: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl.auto: none
+        format_sql: true
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      timeout: 2000ms
+
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+  expirationMs: 86400000
+
+razorpay:
+  key:
+    id: rzp_test_S8ap03anBQzz4i
+    secret: DbqW3WX27A579O2OPR553JXs
+
+ai:
+  ml-service-url: http://127.0.0.1:8000
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

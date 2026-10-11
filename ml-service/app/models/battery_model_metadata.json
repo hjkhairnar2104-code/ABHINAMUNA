@@ -1,0 +1,313 @@
+{
+  "dataset_info": {
+    "dataset_name": "EV Lithium-Ion Battery Health & Real-World Telemetry Dataset",
+    "file_source": "ev_battery_health.csv",
+    "sample_count": 50000,
+    "total_columns": 35,
+    "features_used_soh": 16,
+    "features_used_rul": 17,
+    "features_used_risk": 9,
+    "validation_split": "80% Train / 20% Test Split",
+    "target_variable": "State of Health (SOH %) & Remaining Useful Life (RUL Cycles)"
+  },
+  "models_comparison": {
+    "Linear Regression": {
+      "mae": 1.319,
+      "rmse": 1.95,
+      "r2_score": 0.9254,
+      "status": "Baseline Model",
+      "latency_ms": 0.3
+    },
+    "Random Forest Regressor": {
+      "mae": 0.797,
+      "rmse": 1.194,
+      "r2_score": 0.972,
+      "status": "Ensemble Benchmark",
+      "latency_ms": 2.2
+    },
+    "Gradient Boosted Trees (Champion)": {
+      "mae": 0.715,
+      "rmse": 1.075,
+      "r2_score": 0.9773,
+      "status": "Production Deployed",
+      "latency_ms": 0.6
+    }
+  },
+  "rul_model_metrics": {
+    "model_name": "Gradient Boosted RUL Regressor",
+    "mae_cycles": 300.4,
+    "rmse_cycles": 423.8,
+    "r2_score": 0.8783
+  },
+  "risk_classifier_metrics": {
+    "model_name": "Random Forest Thermal & Failure Risk Classifier",
+    "accuracy": 0.9554,
+    "classes": [
+      "Low",
+      "Medium",
+      "High"
+    ]
+  },
+  "feature_importances": {
+    "internal_resistance_mohm": 0.7332,
+    "cycle_count": 0.157,
+    "battery_age_days": 0.0502,
+    "chemistry_code": 0.0392,
+    "total_energy_throughput_kwh": 0.0089,
+    "pack_capacity_kwh": 0.0056,
+    "avg_depth_of_discharge_pct": 0.0011,
+    "avg_ambient_temp_c": 0.001,
+    "peak_temp_during_fast_charge_c": 0.001,
+    "charge_cycles_per_month": 0.0008,
+    "fast_charge_ratio": 0.0005,
+    "voltage_avg_v": 0.0004,
+    "avg_charging_power_kw": 0.0003,
+    "avg_state_of_charge_pct": 0.0003,
+    "current_avg_a": 0.0002,
+    "charge_time_avg_min": 0.0002
+  },
+  "top_factors_explained": [
+    {
+      "feature": "Internal Resistance (m\u03a9)",
+      "weight": 73.3,
+      "explanation": "Electrolyte decomposition and Solid Electrolyte Interphase (SEI) layer thickening directly elevate cell impedance as capacity fades."
+    },
+    {
+      "feature": "Cycle Count",
+      "weight": 15.7,
+      "explanation": "Cumulative lithium-ion insertion and extraction fatigue active cathode crystal lattice sites."
+    },
+    {
+      "feature": "Total Energy Throughput (kWh)",
+      "weight": 0.9,
+      "explanation": "Total electron Coulombs processed over battery lifespan correlates strongly with microscopic electrode wear."
+    },
+    {
+      "feature": "Peak Fast Charge Temp (\u00b0C)",
+      "weight": 0.1,
+      "explanation": "High thermal peaks during DC fast charging trigger accelerated parasitic chemical side reactions."
+    },
+    {
+      "feature": "Depth of Discharge (DoD %)",
+      "weight": 0.1,
+      "explanation": "Deep discharge below 10% SOC causes mechanical lattice strain on cell graphite anodes."
+    }
+  ],
+  "chemistry_insights": {
+    "LFP": {
+      "sample_count": 13945,
+      "mean_soh": 96.09,
+      "mean_rul_cycles": 3054,
+      "mean_cycle_count": 549,
+      "mean_internal_resistance": 41.02,
+      "mean_peak_temp_c": 26.47,
+      "high_risk_ratio": 0.0009,
+      "longevity_rating": "5/5 - Outstanding",
+      "description": "Lithium Iron Phosphate offers superior thermal stability, lowest impedance growth, and 3,000+ cycle life. Highly resistant to thermal runaway."
+    },
+    "LMO": {
+      "sample_count": 6885,
+      "mean_soh": 89.29,
+      "mean_rul_cycles": 465,
+      "mean_cycle_count": 563,
+      "mean_internal_resistance": 58.48,
+      "mean_peak_temp_c": 26.42,
+      "high_risk_ratio": 0.1432,
+      "longevity_rating": "3/5 - Moderate",
+      "description": "Lithium Manganese Oxide exhibits higher internal resistance growth over extended high-rate fast-charging sessions."
+    },
+    "NCA": {
+      "sample_count": 9727,
+      "mean_soh": 91.49,
+      "mean_rul_cycles": 783,
+      "mean_cycle_count": 594,
+      "mean_internal_resistance": 52.84,
+      "mean_peak_temp_c": 27.23,
+      "high_risk_ratio": 0.0842,
+      "longevity_rating": "3.5/5 - Good",
+      "description": "Nickel Cobalt Aluminum yields extreme energy density and rapid discharge power. Moderate cycle life, requires active thermal conditioning."
+    },
+    "NMC": {
+      "sample_count": 19443,
+      "mean_soh": 92.69,
+      "mean_rul_cycles": 1088,
+      "mean_cycle_count": 554,
+      "mean_internal_resistance": 49.32,
+      "mean_peak_temp_c": 26.53,
+      "high_risk_ratio": 0.0534,
+      "longevity_rating": "4/5 - Excellent",
+      "description": "Nickel Manganese Cobalt provides top-tier energy density and balanced cycle life (~1,200 cycles). Sensitive to ambient heat >40\u00b0C."
+    }
+  },
+  "chemistry_curves": [
+    {
+      "cycle": 0,
+      "LFP": 100.0,
+      "NMC": 100.0,
+      "NCA": 100.0,
+      "LMO": 100.0
+    },
+    {
+      "cycle": 200,
+      "LFP": 98.4,
+      "NMC": 95.7,
+      "NCA": 94.2,
+      "LMO": 91.4
+    },
+    {
+      "cycle": 400,
+      "LFP": 96.9,
+      "NMC": 92.0,
+      "NCA": 89.6,
+      "LMO": 84.7
+    },
+    {
+      "cycle": 600,
+      "LFP": 95.5,
+      "NMC": 88.6,
+      "NCA": 85.3,
+      "LMO": 78.7
+    },
+    {
+      "cycle": 800,
+      "LFP": 94.1,
+      "NMC": 85.3,
+      "NCA": 81.2,
+      "LMO": 73.0
+    },
+    {
+      "cycle": 1000,
+      "LFP": 92.7,
+      "NMC": 82.1,
+      "NCA": 77.3,
+      "LMO": 67.6
+    },
+    {
+      "cycle": 1200,
+      "LFP": 91.3,
+      "NMC": 79.0,
+      "NCA": 73.5,
+      "LMO": 62.4
+    },
+    {
+      "cycle": 1400,
+      "LFP": 89.9,
+      "NMC": 76.0,
+      "NCA": 69.8,
+      "LMO": 60.0
+    },
+    {
+      "cycle": 1600,
+      "LFP": 88.6,
+      "NMC": 73.0,
+      "NCA": 66.2,
+      "LMO": 60.0
+    },
+    {
+      "cycle": 1800,
+      "LFP": 87.2,
+      "NMC": 70.0,
+      "NCA": 62.6,
+      "LMO": 60.0
+    },
+    {
+      "cycle": 2000,
+      "LFP": 85.9,
+      "NMC": 67.1,
+      "NCA": 62.0,
+      "LMO": 60.0
+    },
+    {
+      "cycle": 2200,
+      "LFP": 84.6,
+      "NMC": 65.0,
+      "NCA": 62.0,
+      "LMO": 60.0
+    },
+    {
+      "cycle": 2400,
+      "LFP": 83.2,
+      "NMC": 65.0,
+      "NCA": 62.0,
+      "LMO": 60.0
+    }
+  ],
+  "feature_medians": {
+    "cycle_count": 371.0,
+    "internal_resistance_mohm": 43.08,
+    "total_energy_throughput_kwh": 24134.4,
+    "battery_age_days": 424.0,
+    "pack_capacity_kwh": 72.6,
+    "avg_charging_power_kw": 28.8,
+    "fast_charge_ratio": 0.27,
+    "avg_depth_of_discharge_pct": 65.1,
+    "avg_state_of_charge_pct": 67.8,
+    "charge_cycles_per_month": 18.9,
+    "avg_ambient_temp_c": 21.3,
+    "voltage_avg_v": 365.6,
+    "current_avg_a": 137.3,
+    "charge_time_avg_min": 94.4,
+    "peak_temp_during_fast_charge_c": 26.8
+  },
+  "chemistry_mapping": {
+    "LFP": 0,
+    "NMC": 1,
+    "NCA": 2,
+    "LMO": 3
+  },
+  "risk_mapping": {
+    "0": "Low",
+    "1": "Medium",
+    "2": "High"
+  },
+  "features": {
+    "soh_features": [
+      "cycle_count",
+      "internal_resistance_mohm",
+      "total_energy_throughput_kwh",
+      "battery_age_days",
+      "pack_capacity_kwh",
+      "avg_charging_power_kw",
+      "fast_charge_ratio",
+      "avg_depth_of_discharge_pct",
+      "avg_state_of_charge_pct",
+      "charge_cycles_per_month",
+      "avg_ambient_temp_c",
+      "voltage_avg_v",
+      "current_avg_a",
+      "charge_time_avg_min",
+      "peak_temp_during_fast_charge_c",
+      "chemistry_code"
+    ],
+    "rul_features": [
+      "state_of_health_pct",
+      "cycle_count",
+      "internal_resistance_mohm",
+      "total_energy_throughput_kwh",
+      "battery_age_days",
+      "pack_capacity_kwh",
+      "avg_charging_power_kw",
+      "fast_charge_ratio",
+      "avg_depth_of_discharge_pct",
+      "avg_state_of_charge_pct",
+      "charge_cycles_per_month",
+      "avg_ambient_temp_c",
+      "voltage_avg_v",
+      "current_avg_a",
+      "charge_time_avg_min",
+      "peak_temp_during_fast_charge_c",
+      "chemistry_code"
+    ],
+    "risk_features": [
+      "internal_resistance_mohm",
+      "peak_temp_during_fast_charge_c",
+      "avg_ambient_temp_c",
+      "fast_charge_ratio",
+      "cycle_count",
+      "state_of_health_pct",
+      "voltage_avg_v",
+      "current_avg_a",
+      "chemistry_code"
+    ]
+  }
+}
