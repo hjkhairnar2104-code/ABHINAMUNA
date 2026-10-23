@@ -4,6 +4,8 @@ build/
 .env
 *.tar
 *.tar.gz
+*.tgz
+*.zip
 *.csv
 .idea/
 .vscode/
@@ -11,6 +13,22 @@ target/
 __pycache__/
 *.pyc
 
+# Logs & Runtime Dumps
+*.log
+*.out
+*.err
+*.timestamp-*.mjs
+BOOT-INF/
+backend/boot.*
+backend/*.log
+backend/sources.txt
+backend/data/
+backend/application.yml
+chat_test_out.json
+rag_test_out.json
+rag_results.txt
+
 .env
 .env.*
 !.env.example
+

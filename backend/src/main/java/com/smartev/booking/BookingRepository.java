@@ -13,8 +13,13 @@ import java.util.Optional;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"station", "slot", "vehicle", "user"})
     List<Booking> findByUserIdOrderByCreatedAtDesc(Long userId);
 
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"station", "slot", "vehicle", "user"})
+    List<Booking> findAllByOrderByCreatedAtDesc();
+
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"station", "slot", "vehicle", "user"})
     Optional<Booking> findByBookingReference(String bookingReference);
 
     Optional<Booking> findByRazorpayOrderId(String razorpayOrderId);

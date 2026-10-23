@@ -48,6 +48,36 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(org.springframework.security.authentication.BadCredentialsException.class)
+    public ResponseEntity<Map<String, Object>> handleBadCredentials(org.springframework.security.authentication.BadCredentialsException ex) {
+        Map<String, Object> err = new HashMap<>();
+        err.put("timestamp", LocalDateTime.now());
+        err.put("status", HttpStatus.UNAUTHORIZED.value());
+        err.put("error", "Unauthorized");
+        err.put("message", "Invalid email or password credentials");
+        return new ResponseEntity<>(err, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(org.springframework.security.access.AccessDeniedException.class)
+    public ResponseEntity<Map<String, Object>> handleAccessDenied(org.springframework.security.access.AccessDeniedException ex) {
+        Map<String, Object> err = new HashMap<>();
+        err.put("timestamp", LocalDateTime.now());
+        err.put("status", HttpStatus.FORBIDDEN.value());
+        err.put("error", "Forbidden");
+        err.put("message", "Access is denied for this resource");
+        return new ResponseEntity<>(err, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
+        Map<String, Object> err = new HashMap<>();
+        err.put("timestamp", LocalDateTime.now());
+        err.put("status", HttpStatus.BAD_REQUEST.value());
+        err.put("error", "Bad Request");
+        err.put("message", ex.getMessage());
+        return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGeneral(Exception ex) {
         Map<String, Object> err = new HashMap<>();

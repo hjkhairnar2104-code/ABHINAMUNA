@@ -35,5 +35,11 @@ public class BookingResponse {
     private Double totalAmount;
     private BookingStatus status;
     private String qrCodeBase64;
+    private Long userId;
+    private String userName;
+    private String userEmail;
+    private String userPhone;
+    private String razorpayOrderId;
+    private String razorpayPaymentId;
     private LocalDateTime createdAt;
 }

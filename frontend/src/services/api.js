@@ -42,7 +42,8 @@ export const navigationApi = {
 export const bookingApi = {
   createHold: (data) => api.post('/bookings/hold', data),
   verifyPayment: (data) => api.post('/bookings/verify-payment', data),
-  getMyBookings: () => api.get('/bookings/my-bookings'),
+  getMyBookings: (params) => api.get('/bookings/my-bookings', { params }),
+  getAllBookings: () => api.get('/bookings/all'),
   getByRef: (ref) => api.get(`/bookings/${ref}`),
   cancel: (id) => api.post(`/bookings/${id}/cancel`),
 };
@@ -58,9 +59,16 @@ export const batteryApi = {
   getLatest: (vehicleId = 1) => api.get(`/battery/latest/${vehicleId}`),
   submitTelemetry: (vehicleId, data) => api.post(`/battery/telemetry/${vehicleId}`, data),
   getHistory: (vehicleId = 1) => api.get(`/battery/history/${vehicleId}`),
-  getModelEvaluation: () => api.get('/battery/model-evaluation'),
-  runDiagnostics: (data) => api.post('/battery/diagnostics', data),
-  getChemistryInsights: () => api.get('/battery/chemistry-insights'),
+  getModelEvaluation: () => 
+    api.get('/battery/model-evaluation').catch(() => axios.get('http://localhost:8000/models/evaluation')),
+  runDiagnostics: (data) => 
+    api.post('/battery/diagnostics', data).catch(() => axios.post('http://localhost:8000/predict/battery-diagnostics', data)),
+  getChemistryInsights: () => 
+    api.get('/battery/chemistry-insights').catch(() => axios.get('http://localhost:8000/battery/chemistry-insights')),
+  predictMasterCell: (data) => 
+    axios.post('http://localhost:8000/predict/master-cell', data),
+  getResearchPaper: () => 
+    axios.get('http://localhost:8000/research/paper-data'),
 };
 
 export const aiApi = {

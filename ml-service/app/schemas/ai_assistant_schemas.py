@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import List, Dict, Optional, Any
 
 class ChatMessage(BaseModel):
@@ -21,3 +21,5 @@ class ChatResponse(BaseModel):
     tool_result: Optional[Dict[str, Any]] = None
     action_type: Optional[str] = None # e.g. "SHOW_ROUTE", "SHOW_STATION", "PROMPT_BOOKING", "NAVIGATE"
     suggested_quick_replies: List[str] = []
+    retrieved_sources: Optional[List[str]] = None
+    is_rag: bool = True

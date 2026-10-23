@@ -32,8 +32,8 @@ public class StationService {
 
     public List<StationResponse> getAllStations(LocalDate date, LocalTime startTime, LocalTime endTime) {
         LocalDate queryDate = date != null ? date : LocalDate.now();
-        LocalTime queryStart = startTime != null ? startTime : LocalTime.of(17, 0);
-        LocalTime queryEnd = endTime != null ? endTime : LocalTime.of(19, 0);
+        LocalTime queryStart = startTime != null ? startTime : LocalTime.now();
+        LocalTime queryEnd = endTime != null ? endTime : LocalTime.now().plusHours(2);
 
         List<Station> stations = stationRepository.findByActiveTrue();
         return stations.stream()
@@ -46,8 +46,8 @@ public class StationService {
                 .orElseThrow(() -> new ResourceNotFoundException("Station not found: " + id));
 
         LocalDate queryDate = date != null ? date : LocalDate.now();
-        LocalTime queryStart = startTime != null ? startTime : LocalTime.of(17, 0);
-        LocalTime queryEnd = endTime != null ? endTime : LocalTime.of(19, 0);
+        LocalTime queryStart = startTime != null ? startTime : LocalTime.now();
+        LocalTime queryEnd = endTime != null ? endTime : LocalTime.now().plusHours(2);
 
         return buildStationResponse(station, queryDate, queryStart, queryEnd);
     }
@@ -72,14 +72,22 @@ public class StationService {
 
             if (effectiveStatus == SlotStatus.MAINTENANCE || effectiveStatus == SlotStatus.DISABLED) {
                 // Keep as is
-            } else if (bookedSlotIds.contains(s.getId())) {
+            } else if (bookedSlotIds.contains(s.getId()) || effectiveStatus == SlotStatus.BOOKED) {
                 effectiveStatus = SlotStatus.BOOKED;
+            } else if (effectiveStatus == SlotStatus.HELD) {
+                // Currently held
             } else {
                 // Check if held in Redis
-                String redisKey = String.format("booking:hold:%d:%d:%s:%s",
-                        station.getId(), s.getId(), date, startTime);
-                Boolean isHeld = redisTemplate.hasKey(redisKey);
-                if (Boolean.TRUE.equals(isHeld)) {
+                boolean isHeld = false;
+                try {
+                    String redisKey = String.format("booking:hold:%d:%d:%s:%s",
+                            station.getId(), s.getId(), date, startTime);
+                    isHeld = Boolean.TRUE.equals(redisTemplate.hasKey(redisKey));
+                } catch (Exception e) {
+                    log.debug("Redis hold check bypassed: {}", e.getMessage());
+                }
+
+                if (isHeld) {
                     effectiveStatus = SlotStatus.HELD;
                 } else {
                     effectiveStatus = SlotStatus.AVAILABLE;

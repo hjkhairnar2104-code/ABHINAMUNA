@@ -35,6 +35,25 @@ public class JwtUtils {
         return extractClaim(token, Claims::getExpiration);
     }
 
+    public Long extractUserId(String token) {
+        try {
+            return extractClaim(token, claims -> {
+                Object userIdObj = claims.get("userId");
+                if (userIdObj instanceof Number) {
+                    return ((Number) userIdObj).longValue();
+                }
+                if (userIdObj != null) {
+                    try {
+                        return Long.parseLong(userIdObj.toString());
+                    } catch (NumberFormatException ignored) {}
+                }
+                return null;
+            });
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);

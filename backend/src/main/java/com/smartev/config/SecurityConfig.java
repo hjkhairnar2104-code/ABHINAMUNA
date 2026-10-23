@@ -53,7 +53,9 @@ public class SecurityConfig {
                                 "/api/ai/**",
                                 "/api/analytics/**",
                                 "/api/battery/**",
-                                "/api/reviews/**"
+                                "/api/reviews/**",
+                                "/api/vehicles/**",
+                                "/api/notifications/**"
                         ).permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/stations/**").permitAll()
                         .requestMatchers("/api/admin/**").hasAuthority("ROLE_ADMIN")

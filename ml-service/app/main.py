@@ -7,10 +7,13 @@ load_dotenv()
 
 from app.schemas.battery_schemas import (
     BatteryTelemetryInput,
+    MasterCellTelemetryInput,
     SOHPredictionResponse,
     RULPredictionResponse,
     ModelEvaluationResponse,
-    BatteryFullDiagnosticsResponse
+    BatteryFullDiagnosticsResponse,
+    MasterCellPredictionResponse,
+    ResearchPaperDataResponse
 )
 from app.schemas.demand_schemas import (
     DemandPredictionRequest,
@@ -121,6 +124,26 @@ def get_model_evaluation():
         return battery_ml_service.get_evaluation()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Evaluation fetch failed: {str(e)}")
+
+@app.post("/predict/master-cell", response_model=MasterCellPredictionResponse)
+def predict_master_cell(cell_data: MasterCellTelemetryInput):
+    """
+    Predicts cell-level SOH, RUL, and Knee-Point cycles using the LightGBM Master Electrochemical Laboratory Model (CALCE).
+    """
+    try:
+        return battery_ml_service.predict_master_cell(cell_data)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Master cell prediction failed: {str(e)}")
+
+@app.get("/research/paper-data", response_model=ResearchPaperDataResponse)
+def get_research_paper_data():
+    """
+    Returns full research paper content: title, abstract, methodology, equations, dataset specs, benchmark comparison, and figure URLs.
+    """
+    try:
+        return battery_ml_service.get_research_paper_data()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Research paper data fetch failed: {str(e)}")
 
 # ==================== DEMAND PREDICTION ML ====================
 

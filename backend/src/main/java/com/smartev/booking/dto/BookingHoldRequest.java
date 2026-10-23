@@ -32,5 +32,6 @@ public class BookingHoldRequest {
     @NotNull(message = "End time is required")
     private LocalTime endTime;
 
+    @Builder.Default
     private Double chargingKwh = 25.0;
 }

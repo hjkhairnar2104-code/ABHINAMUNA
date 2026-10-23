@@ -23,8 +23,13 @@ public class VehicleController {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return 1L; // fallback demo driver
         }
-        String token = authHeader.substring(7);
-        return jwtUtils.extractClaim(token, claims -> claims.get("userId", Long.class));
+        try {
+            String token = authHeader.substring(7);
+            Long userId = jwtUtils.extractUserId(token);
+            return userId != null ? userId : 1L;
+        } catch (Exception e) {
+            return 1L;
+        }
     }
 
     @GetMapping

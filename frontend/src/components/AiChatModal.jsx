@@ -14,13 +14,15 @@ const AiChatModal = () => {
     {
       id: 1,
       sender: 'assistant',
-      text: "Hello! I am your **SmartEV AI Copilot**. I can plan EV expressway routes (e.g. Pune → Mumbai), recommend high-speed stations with live slot locks, and inspect your battery SOH. How can I assist your trip today?",
+      text: "Hello! I am your **ChargeMate AI Copilot** powered by Retrieval-Augmented Generation (RAG).\n\nAsk me anything about:\n• 📍 **Stations in Pune & India:** e.g. *'What stations are near Wakad or Baner?'*\n• 🔋 **Battery Health & Chemistries:** e.g. *'Explain LFP vs NMC'*, *'What is the SOH formula?'*\n• 🗺️ **Expressway Travel:** e.g. *'Where should I stop on Pune to Mumbai NH 48?'*\n• 🌐 **Website & Platform:** e.g. *'How does the 10-min bay lock work?'*, *'Why did my location show Mumbai?'*\n\nHow can I help your EV journey today?",
       toolExecuted: null,
+      retrievedSources: ["ChargeMate RAG Knowledge Base", "EV Battery Telemetry (CALCE/Kaggle)"],
+      isRag: true,
       quickReplies: [
-        "I am travelling from Pune to Mumbai.",
-        "Where should I stop?",
-        "Check my battery health",
-        "Which stations have 120kW fast chargers?"
+        "What stations are near Wakad Pune?",
+        "Explain LFP vs NMC battery chemistry",
+        "Why did my location show Mumbai?",
+        "How does the 10-minute bay lock work?"
       ]
     }
   ]);
@@ -66,6 +68,8 @@ const AiChatModal = () => {
         toolExecuted: data.tool_executed,
         actionType: data.action_type,
         toolResult: data.tool_result,
+        retrievedSources: data.retrieved_sources || [],
+        isRag: data.is_rag !== false,
         quickReplies: data.suggested_quick_replies || ["Show on Map", "Check slot availability"]
       };
 
@@ -79,6 +83,9 @@ const AiChatModal = () => {
           sender: 'assistant',
           text: "I analyzed the route Pune → Mumbai (148 km). Recommended stop is GreenCharge Lonavala with 120 kW dual CCS2 guns and 6 free slots.",
           toolExecuted: "recommendStation",
+          retrievedSources: ["Corridor Navigation: Pune - Mumbai (NH 48)"],
+          isRag: true,
+          actionType: "SHOW_ROUTE",
           quickReplies: ["Book it tomorrow at 5 PM", "Navigate now"]
         }
       ]);
@@ -88,16 +95,45 @@ const AiChatModal = () => {
   };
 
   const handleActionClick = (actionType) => {
-    if (actionType === 'SHOW_ROUTE' || actionType === 'NAVIGATE') {
+    if (actionType === 'SHOW_ROUTE' || actionType === 'NAVIGATE' || actionType === 'SHOW_NEARBY') {
       navigate('/dashboard');
       setIsOpen(false);
     } else if (actionType === 'SHOW_BATTERY') {
       navigate('/battery-health');
       setIsOpen(false);
     } else if (actionType === 'SHOW_STATION' || actionType === 'PROMPT_BOOKING') {
-      navigate('/stations/5'); // GreenCharge Lonavala
+      navigate('/dashboard');
       setIsOpen(false);
     }
+  };
+
+  const renderFormattedText = (text) => {
+    if (!text) return null;
+    const lines = text.split('\n');
+    return lines.map((line, idx) => {
+      if (line.startsWith('### ')) {
+        return (
+          <h4 key={idx} className="text-xs font-bold text-emerald-400 mt-2.5 mb-1">
+            {line.replace('### ', '')}
+          </h4>
+        );
+      }
+      const formatted = line.split(/(\*\*.*?\*\*|`.*?`)/g).map((part, pIdx) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={pIdx} className="font-bold text-white">{part.slice(2, -2)}</strong>;
+        }
+        if (part.startsWith('`') && part.endsWith('`')) {
+          return <code key={pIdx} className="px-1.5 py-0.5 rounded bg-slate-800 text-cyan-300 font-mono text-[10px]">{part.slice(1, -1)}</code>;
+        }
+        return part;
+      });
+
+      return (
+        <p key={idx} className={line.trim() === '' ? 'h-1.5' : 'leading-relaxed'}>
+          {formatted}
+        </p>
+      );
+    });
   };
 
   return (
@@ -171,6 +207,21 @@ const AiChatModal = () => {
                         : 'bg-slate-900/90 border border-slate-800 text-slate-200 shadow-sm'
                     }`}
                   >
+                    {/* RAG Grounded Sources Badge */}
+                    {m.isRag && m.retrievedSources && m.retrievedSources.length > 0 && (
+                      <div className="mb-2 flex items-center gap-1.5 flex-wrap">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold">
+                          <Sparkles className="w-2.5 h-2.5 text-emerald-400" />
+                          RAG Grounded
+                        </span>
+                        {m.retrievedSources.slice(0, 3).map((src, sIdx) => (
+                          <span key={sIdx} className="px-1.5 py-0.5 rounded bg-slate-800/90 text-slate-300 text-[9px] border border-slate-700/70 font-mono">
+                            📚 {src}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                     {/* Tool Execution Badge */}
                     {m.toolExecuted && (
                       <div className="mb-2 inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 text-[10px] font-mono font-medium">
@@ -179,7 +230,7 @@ const AiChatModal = () => {
                       </div>
                     )}
 
-                    <div className="whitespace-pre-line">{m.text}</div>
+                    <div>{renderFormattedText(m.text)}</div>
 
                     {/* Action Trigger Button */}
                     {m.actionType && m.actionType !== 'DEFAULT' && (

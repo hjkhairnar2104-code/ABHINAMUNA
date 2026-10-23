@@ -1,6 +1,7 @@
 package com.smartev.vehicle;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.smartev.user.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,8 +25,13 @@ public class Vehicle {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "password"})
+    @JsonIgnore
     private User user;
+
+    @JsonProperty("userId")
+    public Long getUserId() {
+        return user != null ? user.getId() : null;
+    }
 
     @Column(nullable = false, length = 30)
     private String vehicleNumber; // e.g. MH 12 AB 1234

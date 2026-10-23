@@ -74,6 +74,7 @@ public class Booking {
     private BookingStatus status = BookingStatus.HELD;
 
     private String razorpayOrderId;
+    private String razorpayPaymentId;
 
     @Lob
     @Column(columnDefinition = "TEXT")

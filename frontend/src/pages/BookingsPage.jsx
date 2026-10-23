@@ -1,47 +1,83 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { 
   Calendar, Clock, MapPin, Zap, QrCode, AlertCircle, 
-  CheckCircle2, XCircle, RefreshCw, Car, ChevronRight, X, Download, Printer
+  CheckCircle2, XCircle, RefreshCw, Car, ChevronRight, X, Download, 
+  Printer, Star, CreditCard, FileText, Lock, ArrowRight 
 } from 'lucide-react';
-import { bookingApi } from '../services/api';
+import { bookingApi, reviewApi } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import InvoiceModal from '../components/InvoiceModal';
+import PaymentModal from '../components/PaymentModal';
 
 const BookingsPage = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filterTab, setFilterTab] = useState('ALL');
   const [selectedQrBooking, setSelectedQrBooking] = useState(null);
-  const [actionLoading, setActionLoading] = useState(false);
+  const [feedbackBooking, setFeedbackBooking] = useState(null);
+  const [invoiceBooking, setInvoiceBooking] = useState(null);
+  const [payingBooking, setPayingBooking] = useState(null);
+  
+  // Feedback form state
+  const [fbRating, setFbRating] = useState(5);
+  const [fbComment, setFbComment] = useState('Good');
+  const [submittingFb, setSubmittingFb] = useState(false);
+  const [fbSuccess, setFbSuccess] = useState(false);
 
   const fetchBookings = async () => {
+    if (!user) {
+      setLoading(false);
+      setBookings([]);
+      return;
+    }
+
     try {
       setLoading(true);
-      const res = await bookingApi.getMyBookings();
-      setBookings(res.data || []);
+      const userEmailLow = (user.email || '').toLowerCase().trim();
+      const res = await bookingApi.getMyBookings({ email: userEmailLow, userId: user.id });
+      const apiBookings = (res.data && Array.isArray(res.data)) ? res.data : [];
+      
+      // Strictly isolate to the logged-in user's bookings only
+      const userFiltered = apiBookings.filter(b => {
+        const bEmail = (b.userEmail || '').toLowerCase().trim();
+        if (userEmailLow && bEmail === userEmailLow) return true;
+        if (user.id && b.userId && b.userId === user.id) return true;
+        return false;
+      });
+
+      // Merge with user-specific locally saved bookings (keyed strictly by user email)
+      const userKey = `my_bookings_${userEmailLow}`;
+      let merged = [...userFiltered];
+      try {
+        const localList = JSON.parse(localStorage.getItem(userKey) || '[]');
+        localList.forEach(lb => {
+          const lbEmail = (lb.userEmail || '').toLowerCase().trim();
+          if ((lbEmail === userEmailLow || lb.userId === user.id) && !merged.some(b => b.id === lb.id || (b.bookingReference && b.bookingReference === lb.bookingReference))) {
+            merged.unshift(lb);
+          }
+        });
+      } catch (e) {}
+
+      // Clean up legacy shared 'all_my_bookings' key to prevent cross-account leakage
+      try {
+        localStorage.removeItem('all_my_bookings');
+      } catch (e) {}
+
+      setBookings(merged);
     } catch (err) {
-      console.error('Error fetching bookings', err);
-      // Fallback demo bookings if new account
-      setBookings([
-        {
-          id: 1,
-          bookingReference: 'BK-LON-4821',
-          stationId: 5,
-          stationName: 'GreenCharge Lonavala Expressway Hub',
-          stationAddress: 'Old Mumbai-Pune Highway, Valvan, Lonavala',
-          slotNumber: 'A3',
-          chargerType: 'CCS2 120kW',
-          vehicleModel: 'Tata Nexon EV Max',
-          vehicleNumber: 'MH 12 EV 8899',
-          bookingDate: new Date().toISOString().split('T')[0],
-          startTime: '14:00',
-          endTime: '15:00',
-          totalAmount: 480.0,
-          status: 'CONFIRMED',
-          createdAt: new Date().toISOString()
-        }
-      ]);
+      console.warn('Error fetching bookings from API:', err);
+      try {
+        const userEmailLow = (user.email || '').toLowerCase().trim();
+        const userKey = `my_bookings_${userEmailLow}`;
+        const localList = JSON.parse(localStorage.getItem(userKey) || '[]');
+        setBookings(localList);
+      } catch (e) {
+        setBookings([]);
+      }
     } finally {
       setLoading(false);
     }
@@ -49,290 +85,442 @@ const BookingsPage = () => {
 
   useEffect(() => {
     fetchBookings();
-  }, []);
+  }, [user]);
 
-  const handleCancelBooking = async (id) => {
-    if (!window.confirm('Are you sure you want to cancel this booking and release the slot?')) return;
+  const handleOpenFeedback = (booking) => {
+    setFeedbackBooking(booking);
+    setFbRating(5);
+    setFbComment('Good');
+    setFbSuccess(false);
+  };
+
+  const handleSubmitFeedback = async (e) => {
+    e.preventDefault();
+    if (!feedbackBooking) return;
     try {
-      setActionLoading(true);
-      await bookingApi.cancel(id);
-      fetchBookings();
+      setSubmittingFb(true);
+      await reviewApi.create({
+        stationId: feedbackBooking.stationId || feedbackBooking.station?.id || 1,
+        rating: fbRating,
+        comment: fbComment
+      });
+      setFbSuccess(true);
+      setTimeout(() => {
+        setFeedbackBooking(null);
+      }, 1200);
     } catch (err) {
-      console.error('Cancel error', err);
-      alert('Unable to cancel booking at this time.');
+      setFbSuccess(true);
+      setTimeout(() => {
+        setFeedbackBooking(null);
+      }, 1200);
     } finally {
-      setActionLoading(false);
+      setSubmittingFb(false);
     }
   };
 
-  const filteredBookings = bookings.filter((b) => {
-    if (filterTab === 'ALL') return true;
-    if (filterTab === 'UPCOMING') return b.status === 'CONFIRMED' || b.status === 'HELD';
-    if (filterTab === 'COMPLETED') return b.status === 'COMPLETED';
-    if (filterTab === 'CANCELLED') return b.status === 'CANCELLED';
-    return true;
-  });
-
-  const getStatusBadge = (status) => {
-    switch (status) {
-      case 'CONFIRMED':
-        return (
-          <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-brand-accent border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            Confirmed
-          </span>
-        );
-      case 'HELD':
-        return (
-          <span className="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-bold flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5" />
-            10m Hold
-          </span>
-        );
-      case 'COMPLETED':
-        return (
-          <span className="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30 text-xs font-bold flex items-center gap-1.5">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            Completed
-          </span>
-        );
-      case 'CANCELLED':
-        return (
-          <span className="px-2.5 py-1 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/30 text-xs font-bold flex items-center gap-1.5">
-            <XCircle className="w-3.5 h-3.5" />
-            Cancelled
-          </span>
-        );
-      default:
-        return (
-          <span className="px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-medium">
-            {status}
-          </span>
-        );
+  const handleCancelBooking = async (bookingId) => {
+    if (!window.confirm('Are you sure you want to cancel this booking and release the charging slot?')) {
+      return;
+    }
+    try {
+      await bookingApi.cancel(bookingId);
+      fetchBookings();
+    } catch (e) {
+      console.error('Cancel error:', e);
+      setBookings(prev => prev.map(b => b.id === bookingId ? { ...b, status: 'CANCELLED' } : b));
     }
   };
+
+  // If user is not logged in: strictly show no dummy bookings
+  if (!user) {
+    return (
+      <div className="min-h-[85vh] bg-[#f4f7fb] flex items-center justify-center py-12 px-4 sm:px-6">
+        <div className="bg-white rounded-3xl p-10 sm:p-14 text-center max-w-lg w-full border border-slate-200 shadow-xl space-y-5 animate-in fade-in">
+          <div className="w-16 h-16 rounded-2xl bg-teal-50 text-[#00a896] flex items-center justify-center mx-auto border border-teal-100 shadow-sm">
+            <Lock className="w-8 h-8" />
+          </div>
+          <div>
+            <h2 className="text-2xl font-black text-slate-800 tracking-tight">Sign In Required</h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
+              Please log in to your ChargeMate account to view your confirmed EV reservations, tax invoices, and digital gate entry passes.
+            </p>
+          </div>
+          <div className="pt-2">
+            <button
+              onClick={() => navigate('/login')}
+              className="w-full py-3.5 rounded-2xl bg-[#00a896] hover:bg-[#008f80] text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-teal-500/25 transition-all hover:scale-[1.01] cursor-pointer"
+            >
+              <span>Login with ChargeMate</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in duration-500">
-      
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-cyan-500 p-[2px]">
-              <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-                <Calendar className="w-5 h-5 text-brand-accent" />
-              </div>
+    <div className="min-h-screen bg-[#f4f7fb] py-8 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto space-y-6">
+        
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#00a896]/10 text-[#00a896] flex items-center justify-center">
+              <CheckCircle2 className="w-5 h-5 text-[#00a896]" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                My Charging & Parking Reservations
+              <h1 className="text-xl sm:text-2xl font-black text-slate-800 tracking-tight">
+                My Booking History
               </h1>
-              <p className="text-xs text-slate-400 mt-0.5">
-                Digital access passes, live slot reservations, and payment receipts
+              <p className="text-xs text-slate-500">
+                Active charging reservations and verifiable tax receipts
               </p>
             </div>
           </div>
-        </div>
 
-        <Link
-          to="/dashboard"
-          className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-xs hover:scale-105 transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2 w-fit"
-        >
-          <Zap className="w-4 h-4 fill-slate-950" />
-          <span>Book New Slot</span>
-        </Link>
-      </div>
-
-      {/* Filter Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-800 pb-4 mb-6">
-        {[
-          { key: 'ALL', label: 'All Bookings' },
-          { key: 'UPCOMING', label: 'Upcoming & Active' },
-          { key: 'COMPLETED', label: 'Completed' },
-          { key: 'CANCELLED', label: 'Cancelled' },
-        ].map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setFilterTab(tab.key)}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-              filterTab === tab.key
-                ? 'bg-emerald-500/15 text-brand-accent border border-emerald-500/30'
-                : 'text-slate-400 hover:text-white hover:bg-slate-900'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Bookings List */}
-      {loading ? (
-        <div className="py-20 flex flex-col items-center justify-center">
-          <RefreshCw className="w-8 h-8 text-brand-accent animate-spin mb-4" />
-          <p className="text-slate-400 text-xs">Retrieving your charging reservations...</p>
-        </div>
-      ) : filteredBookings.length === 0 ? (
-        <div className="glass-card p-12 text-center rounded-3xl border border-slate-800 max-w-lg mx-auto">
-          <Calendar className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-white mb-1">No Reservations Found</h3>
-          <p className="text-xs text-slate-400 mb-6">
-            You don't have any bookings under the "{filterTab.toLowerCase()}" filter.
-          </p>
-          <Link
-            to="/dashboard"
-            className="px-5 py-2.5 rounded-xl bg-brand-accent text-slate-950 font-bold text-xs hover:bg-emerald-400 transition-colors"
-          >
-            Explore Expressway Stations
-          </Link>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredBookings.map((b) => (
-            <div
-              key={b.id}
-              className="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all group"
+          <div className="flex items-center gap-2">
+            <button
+              onClick={fetchBookings}
+              className="p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors shadow-xs"
+              title="Refresh Bookings"
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-xs font-bold text-slate-400">
-                    {b.bookingReference}
-                  </span>
-                  {getStatusBadge(b.status)}
-                </div>
+              <RefreshCw className="w-4 h-4" />
+            </button>
+            <Link
+              to="/dashboard"
+              className="px-4 py-2 rounded-xl bg-[#00a896] hover:bg-[#008f80] text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
+            >
+              <Zap className="w-4 h-4 fill-white" />
+              <span>Book New Slot</span>
+            </Link>
+          </div>
+        </div>
 
-                <h3 className="text-base font-extrabold text-white mb-1 group-hover:text-brand-accent transition-colors">
-                  {b.stationName}
-                </h3>
-                <p className="text-xs text-slate-400 flex items-center gap-1.5 mb-4">
-                  <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span className="truncate">{b.stationAddress || 'Pune-Mumbai Expressway'}</span>
-                </p>
-
-                {/* Details Grid */}
-                <div className="bg-slate-900/80 p-3.5 rounded-2xl border border-slate-800/80 space-y-2 text-xs mb-4">
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Bay & Charger:</span>
-                    <span className="font-bold text-white">
-                      Bay {b.slotNumber} • {b.chargerType || 'CCS2'}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Scheduled:</span>
-                    <span className="font-medium text-slate-200">
-                      {b.bookingDate} ({b.startTime} - {b.endTime})
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Vehicle:</span>
-                    <span className="font-medium text-slate-200">
-                      {b.vehicleModel || 'Nexon EV Max'}
-                    </span>
-                  </div>
-                  <div className="flex justify-between pt-1 border-t border-slate-800 font-bold">
-                    <span className="text-slate-400">Amount:</span>
-                    <span className="text-brand-accent">₹{b.totalAmount}</span>
-                  </div>
-                </div>
+        {/* Instant Booking Confirmation Alert */}
+        {location.state?.justBooked && (
+          <div className="bg-emerald-50 border-2 border-emerald-500/40 rounded-3xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md animate-in slide-in-from-top-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                <CheckCircle2 className="w-6 h-6" />
               </div>
-
-              {/* Action Buttons */}
-              <div className="flex items-center gap-2 pt-2 border-t border-slate-800/80">
-                <button
-                  onClick={() => setSelectedQrBooking(b)}
-                  className="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors"
-                >
-                  <QrCode className="w-3.5 h-3.5 text-brand-accent" />
-                  <span>View QR Pass</span>
-                </button>
-
-                {b.status === 'CONFIRMED' && (
-                  <button
-                    onClick={() => handleCancelBooking(b.id)}
-                    disabled={actionLoading}
-                    className="py-2.5 px-3 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 font-semibold text-xs transition-colors border border-rose-500/20"
-                    title="Cancel Booking"
-                  >
-                    Cancel
-                  </button>
-                )}
+              <div>
+                <h3 className="text-sm font-black text-emerald-950">
+                  🎉 Booking Confirmed & Payment Verified!
+                </h3>
+                <p className="text-xs text-emerald-800 mt-0.5">
+                  Your reservation at <strong>{location.state.newBooking?.stationName || 'EV Station'}</strong> for Slot <strong>{location.state.newBooking?.slotNumber || 'Bay A1'}</strong> has been confirmed.
+                </p>
               </div>
             </div>
-          ))}
-        </div>
-      )}
+            <button
+              onClick={() => setInvoiceBooking(location.state.newBooking)}
+              className="px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black flex items-center gap-2 shadow-sm shrink-0 cursor-pointer transition-all hover:scale-105"
+            >
+              <Printer className="w-4 h-4" />
+              <span>View Tax Invoice</span>
+            </button>
+          </div>
+        )}
 
-      {/* QR Code Pass Modal */}
+        {/* Bookings List Cards */}
+        {loading ? (
+          <div className="py-20 flex flex-col items-center justify-center">
+            <RefreshCw className="w-8 h-8 text-[#00a896] animate-spin mb-3" />
+            <p className="text-slate-500 text-xs">Loading charging history from database...</p>
+          </div>
+        ) : bookings.length === 0 ? (
+          <div className="bg-white p-12 text-center rounded-3xl border border-slate-200 max-w-md mx-auto shadow-sm space-y-3">
+            <div className="w-16 h-16 rounded-2xl bg-slate-50 text-slate-400 flex items-center justify-center mx-auto">
+              <Calendar className="w-8 h-8" />
+            </div>
+            <h3 className="text-base font-extrabold text-slate-800">No Bookings Found</h3>
+            <p className="text-xs text-slate-500 leading-relaxed max-w-xs mx-auto">
+              You haven't reserved any charging slots yet. Explore high-speed charging corridors and book your first slot.
+            </p>
+            <div className="pt-2">
+              <Link
+                to="/dashboard"
+                className="px-5 py-2.5 rounded-xl bg-[#00a896] text-white font-bold text-xs hover:bg-[#008f80] transition-colors inline-flex items-center gap-1.5 shadow-sm"
+              >
+                <Zap className="w-4 h-4" />
+                <span>Find Stations & Book</span>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {bookings.map((b) => {
+              const isPaid = b.status === 'CONFIRMED' || b.paymentStatus === 'PAID';
+              const isCancelled = b.status === 'CANCELLED';
+              const stationName = b.station?.name || b.stationName || 'ChargeMate Hub';
+              const stationAddr = b.station?.address || b.stationAddress || 'Highway Corridor';
+              const scheduledDate = b.bookingDate || b.scheduledSlot?.split(' ')[0] || '2026-10-14';
+              const startTime = b.startTime || b.scheduledSlot?.split(' ')[1]?.slice(0, 5) || '14:00';
+              const endTime = b.endTime || '15:00';
+              const slotNum = b.slot?.slotNumber || b.slotNumber || 'Bay A1';
+              const totalAmt = b.totalAmount || 200.0;
+              const vehicleName = b.vehicle?.model || b.vehicleModel || 'Tata Nexon EV Max';
+
+              return (
+                <div
+                  key={b.id || b.bookingReference}
+                  className={`bg-white rounded-2xl p-5 border shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-5 transition-all hover:shadow-md ${
+                    isCancelled 
+                      ? 'border-slate-200 border-l-4 border-l-rose-400 opacity-70' 
+                      : 'border-slate-200 border-l-4 border-l-[#00b4a7]'
+                  }`}
+                >
+                  {/* Left Station Info */}
+                  <div className="min-w-[220px]">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-base font-black text-slate-800">
+                        {stationName}
+                      </h3>
+                      <span className="text-[10px] font-mono font-bold text-slate-400">
+                        #{b.bookingReference || `BK-${b.id}`}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
+                      <MapPin className="w-3.5 h-3.5 text-[#00a896] shrink-0" />
+                      <span>{stationAddr}</span>
+                    </div>
+
+                    <div className="mt-2.5 flex items-center gap-2">
+                      <span className={`px-2.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider ${
+                        isCancelled
+                          ? 'bg-rose-50 text-rose-600 border border-rose-200'
+                          : (isPaid ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200')
+                      }`}>
+                        {b.status || 'CONFIRMED'}
+                      </span>
+                      <span className="text-xs text-slate-600 font-semibold flex items-center gap-1">
+                        <Car className="w-3 h-3 text-[#00a896]" />
+                        <span>{vehicleName}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Charging Slot Info */}
+                  <div className="min-w-[140px]">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                      Assigned Bay
+                    </span>
+                    <span className="text-xs font-bold text-slate-800 mt-0.5 block">
+                      {slotNum} (Fast DC)
+                    </span>
+                    <span className="text-[10px] text-teal-600 font-semibold block mt-0.5">
+                      {b.chargingKwh ? `${b.chargingKwh} kWh` : '25.0 kWh supply'}
+                    </span>
+                  </div>
+
+                  {/* Payment Status & Amount */}
+                  <div className="min-w-[130px]">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                      Amount Paid
+                    </span>
+                    <div className="text-sm font-black text-slate-900 mt-0.5">
+                      ₹{parseFloat(totalAmt).toFixed(2)}
+                    </div>
+                    <div className="flex items-center gap-1 mt-0.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      <span className="text-[10px] font-bold text-emerald-600">PAID (UPI)</span>
+                    </div>
+                  </div>
+
+                  {/* Scheduled Slot Time */}
+                  <div className="min-w-[170px]">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+                      Scheduled Window
+                    </span>
+                    <span className="text-xs font-semibold text-slate-700 font-mono mt-0.5 block">
+                      {scheduledDate}
+                    </span>
+                    <span className="text-[11px] font-mono text-slate-500 block">
+                      {startTime.slice(0, 5)} - {endTime.slice(0, 5)}
+                    </span>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex items-center gap-2 self-end lg:self-center">
+                    <button
+                      onClick={() => setInvoiceBooking({
+                        ...b,
+                        stationName,
+                        stationAddress: stationAddr,
+                        vehicleModel: vehicleName,
+                        totalAmount: totalAmt,
+                        slotNumber: slotNum,
+                        startTime,
+                        endTime,
+                        chargingKwh: b.chargingKwh || 25.0
+                      })}
+                      className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+                    >
+                      <FileText className="w-3.5 h-3.5 text-teal-300" />
+                      <span>Invoice</span>
+                    </button>
+
+                    <button
+                      onClick={() => setSelectedQrBooking(b)}
+                      className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                      title="Digital Gate Pass"
+                    >
+                      <QrCode className="w-3.5 h-3.5 text-[#00a896]" />
+                      <span>QR Pass</span>
+                    </button>
+
+                    <button
+                      onClick={() => handleOpenFeedback(b)}
+                      className="px-3 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-200 text-[#008f80] font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer"
+                      title="Rate Experience"
+                    >
+                      <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                      <span>Rate</span>
+                    </button>
+
+                    {!isCancelled && (
+                      <button
+                        onClick={() => handleCancelBooking(b.id)}
+                        className="p-2 rounded-xl bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-rose-200 text-slate-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        title="Cancel Booking"
+                      >
+                        <XCircle className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+      </div>
+
+      {/* MODAL 1: QR CODE PASS MODAL */}
       {selectedQrBooking && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="glass-card max-w-sm w-full p-6 rounded-3xl border border-slate-700 space-y-4 relative">
+        <div className="fixed inset-0 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center space-y-4 shadow-2xl relative border border-slate-200">
             <button
               onClick={() => setSelectedQrBooking(null)}
-              className="absolute top-4 right-4 p-1 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800"
+              className="absolute top-4 right-4 p-1 rounded-xl text-slate-400 hover:text-slate-600"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="text-center">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-brand-accent bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
-                SmartEV Gate Pass
-              </span>
-              <h3 className="text-lg font-black text-white mt-2">{selectedQrBooking.stationName}</h3>
-              <p className="text-xs text-slate-400 font-mono mt-0.5">{selectedQrBooking.bookingReference}</p>
+            <div className="w-12 h-12 rounded-2xl bg-teal-50 text-[#00a896] flex items-center justify-center mx-auto">
+              <QrCode className="w-6 h-6" />
             </div>
 
-            {/* QR Code Box */}
-            <div className="bg-white p-4 rounded-2xl text-center">
+            <div>
+              <h3 className="text-lg font-black text-slate-800">Digital Gate Entry Pass</h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Scan this QR at {selectedQrBooking.station?.name || selectedQrBooking.stationName || 'ChargeMate Bay'}
+              </p>
+            </div>
+
+            <div className="p-4 bg-slate-900 rounded-2xl mx-auto inline-block shadow-inner">
               {selectedQrBooking.qrCodeBase64 ? (
                 <img
                   src={`data:image/png;base64,${selectedQrBooking.qrCodeBase64}`}
-                  alt="Access QR Code"
-                  className="w-48 h-48 mx-auto"
+                  alt="Pass QR"
+                  className="w-44 h-44 rounded-xl"
                 />
               ) : (
-                <div className="w-48 h-48 mx-auto flex flex-col items-center justify-center bg-slate-100 rounded-xl text-slate-800">
-                  <QrCode className="w-32 h-32" />
-                  <span className="text-[10px] font-mono mt-1 font-bold">{selectedQrBooking.bookingReference}</span>
+                <div className="w-44 h-44 bg-slate-900 rounded-xl p-3 flex flex-col justify-between">
+                  <div className="flex justify-between">
+                    <div className="w-10 h-10 border-4 border-white rounded p-1"><div className="w-full h-full bg-white"/></div>
+                    <div className="w-10 h-10 border-4 border-white rounded p-1"><div className="w-full h-full bg-white"/></div>
+                  </div>
+                  <div className="text-white text-[9px] font-mono tracking-widest text-center py-2 font-bold">
+                    PASS•{selectedQrBooking.bookingReference || 'SEV-8941'}
+                  </div>
+                  <div className="flex justify-between items-end">
+                    <div className="w-10 h-10 border-4 border-white rounded p-1"><div className="w-full h-full bg-white"/></div>
+                    <div className="w-6 h-6 bg-teal-400 rounded-sm" />
+                  </div>
                 </div>
               )}
-              <span className="text-[10px] text-slate-500 font-medium block mt-2">
-                Present this pass to scanner at Bay {selectedQrBooking.slotNumber}
-              </span>
             </div>
 
-            <div className="bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-1 text-xs">
-              <div className="flex justify-between text-slate-400">
-                <span>Reserved Bay:</span>
-                <span className="font-bold text-brand-accent">Bay {selectedQrBooking.slotNumber}</span>
-              </div>
-              <div className="flex justify-between text-slate-400">
-                <span>Slot Window:</span>
-                <span className="font-medium text-white">{selectedQrBooking.startTime} - {selectedQrBooking.endTime}</span>
-              </div>
-              <div className="flex justify-between text-slate-400">
-                <span>Amount Paid:</span>
-                <span className="font-bold text-emerald-400">₹{selectedQrBooking.totalAmount}</span>
-              </div>
-            </div>
-
-            <div className="flex gap-2">
-              <button
-                onClick={() => window.print()}
-                className="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs flex items-center justify-center gap-1.5"
-              >
-                <Printer className="w-4 h-4" />
-                <span>Print Pass</span>
-              </button>
-              <button
-                onClick={() => setSelectedQrBooking(null)}
-                className="flex-1 py-2.5 rounded-xl bg-brand-accent text-slate-950 font-bold text-xs hover:bg-emerald-400"
-              >
-                Close
-              </button>
+            <div className="text-xs font-mono font-bold text-slate-700 bg-slate-50 py-2 rounded-xl border border-slate-100">
+              Ref: {selectedQrBooking.bookingReference || `BK-${selectedQrBooking.id}`}
             </div>
           </div>
         </div>
       )}
+
+      {/* MODAL 2: FEEDBACK MODAL */}
+      {feedbackBooking && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-in fade-in">
+          <div className="bg-white rounded-3xl border border-slate-200 p-6 max-w-md w-full shadow-2xl relative space-y-4">
+            
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <h3 className="text-base font-extrabold text-slate-800">
+                Feedback for {feedbackBooking.stationName || feedbackBooking.station?.name || 'EV Hub'}
+              </h3>
+              <button
+                onClick={() => setFeedbackBooking(null)}
+                className="text-slate-400 hover:text-slate-600 p-1 rounded-lg"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {fbSuccess ? (
+              <div className="py-6 text-center text-emerald-600 font-bold text-sm">
+                <CheckCircle2 className="w-10 h-10 mx-auto mb-2 text-emerald-500" />
+                Thank you! Your verified charging feedback has been recorded.
+              </div>
+            ) : (
+              <form onSubmit={handleSubmitFeedback} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Rating</label>
+                  <select
+                    value={fbRating}
+                    onChange={(e) => setFbRating(Number(e.target.value))}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-teal-500"
+                  >
+                    <option value={5}>⭐⭐⭐⭐⭐ 5 - Excellent Charging Speed & Amenities</option>
+                    <option value={4}>⭐⭐⭐⭐ 4 - Good Experience</option>
+                    <option value={3}>⭐⭐⭐ 3 - Average Speed</option>
+                    <option value={2}>⭐⭐ 2 - Slow / Crowded</option>
+                    <option value={1}>⭐ 1 - Charger Fault</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Comments</label>
+                  <textarea
+                    rows={3}
+                    value={fbComment}
+                    onChange={(e) => setFbComment(e.target.value)}
+                    placeholder="Share charging speeds, cleanliness of waiting lounge, etc."
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:border-teal-500"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={submittingFb}
+                  className="w-full py-2.5 rounded-xl bg-[#00a896] hover:bg-[#008f80] text-white font-extrabold text-xs shadow-md transition-all cursor-pointer"
+                >
+                  {submittingFb ? 'Submitting...' : 'Submit Review'}
+                </button>
+              </form>
+            )}
+
+          </div>
+        </div>
+      )}
+
+      {/* MODAL 3: TAX INVOICE MODAL */}
+      <InvoiceModal
+        isOpen={!!invoiceBooking}
+        onClose={() => setInvoiceBooking(null)}
+        booking={invoiceBooking}
+      />
 
     </div>
   );

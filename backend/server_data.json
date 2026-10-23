@@ -1,0 +1,2743 @@
+{
+  "stations": [
+    {
+      "id": 1,
+      "name": "Tata Power FastCharge - Greater Noida Hub",
+      "address": "Yamuna Expressway KM 14, Sector 150",
+      "city": "Greater Noida",
+      "latitude": 28.4744,
+      "longitude": 77.504,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 2,
+      "available_slots": 2,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 142,
+      "openingHours": "24/7 Open",
+      "amenities": "Café, Restrooms, Free Wi-Fi, Lounge, CCTV",
+      "active": true,
+      "corridor": "Delhi-Agra",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 101,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 102,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 103,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 104,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 105,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 106,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 107,
+          "slotNumber": "Bay 7",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 108,
+          "slotNumber": "Bay 8",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jio-bp Pulse Expressway Plaza - Jewar Toll",
+      "address": "Yamuna Expressway KM 42, Near Jewar International Airport Toll",
+      "city": "Jewar",
+      "latitude": 28.175,
+      "longitude": 77.585,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, CHAdeMO",
+      "totalSlots": 10,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 10,
+      "rating": 4.8,
+      "reviewCount": 98,
+      "openingHours": "24/7 Open",
+      "amenities": "Food Mall, Starbucks, Clean Restrooms, 24/7 Security",
+      "active": true,
+      "corridor": "Delhi-Agra",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 201,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 202,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 203,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 204,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 205,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 206,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 207,
+          "slotNumber": "Bay 7",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 208,
+          "slotNumber": "Bay 8",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 209,
+          "slotNumber": "Bay 9",
+          "chargerType": "CHAdeMO 50kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 210,
+          "slotNumber": "Bay 10",
+          "chargerType": "CHAdeMO 50kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Statiq Supercharge Park - Mathura Expressway",
+      "address": "Yamuna Expressway KM 88, Milestone Food Plaza",
+      "city": "Mathura",
+      "latitude": 27.4924,
+      "longitude": 77.6737,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 180,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 210,
+      "openingHours": "24/7 Open",
+      "amenities": "Haldirams, Restrooms, AC Lounge, High Speed Wi-Fi",
+      "active": true,
+      "corridor": "Delhi-Agra",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 301,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 302,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 303,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 304,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 305,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 306,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 307,
+          "slotNumber": "Bay 7",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 308,
+          "slotNumber": "Bay 8",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Khandari Heritage EV Plaza - Agra North",
+      "address": "Near NH 19 & Yamuna Expressway Agra Terminal, Khandari",
+      "city": "Agra",
+      "latitude": 27.1767,
+      "longitude": 78.0081,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 13.8,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 6,
+      "availableSlots": 5,
+      "available_slots": 5,
+      "total_slots": 6,
+      "rating": 4.7,
+      "reviewCount": 65,
+      "openingHours": "24/7 Open",
+      "amenities": "Cafeteria, Restrooms, Tourist Assistance Desk",
+      "active": true,
+      "corridor": "Delhi-Agra",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 401,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 402,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 403,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 404,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 405,
+          "slotNumber": "Bay 5",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 406,
+          "slotNumber": "Bay 6",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "GreenCharge Superhub - Lonavala Ghat Plaza",
+      "address": "Mumbai-Pune Expressway KM 54, Near Lonavala Exit",
+      "city": "Lonavala",
+      "latitude": 18.7557,
+      "longitude": 73.4091,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 15.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, CHAdeMO",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 312,
+      "openingHours": "24/7 Open",
+      "amenities": "Starbucks, McDonald’s, Restrooms, Scenic View Lounge",
+      "active": true,
+      "corridor": "Pune-Mumbai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 501,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 502,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 503,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 504,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 505,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 506,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 507,
+          "slotNumber": "Bay 7",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 508,
+          "slotNumber": "Bay 8",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Tata Power FastCharge - Khalapur Food Mall",
+      "address": "Mumbai-Pune Expressway KM 82, Khalapur Toll Oasis",
+      "city": "Khalapur",
+      "latitude": 18.8315,
+      "longitude": 73.2842,
+      "parkingPricePerHour": 35,
+      "chargingPricePerKwh": 16,
+      "maxChargingSpeedKw": 180,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 8,
+      "available_slots": 8,
+      "total_slots": 10,
+      "rating": 4.8,
+      "reviewCount": 220,
+      "openingHours": "24/7 Open",
+      "amenities": "Food Court, Restrooms, Convenience Store, Wi-Fi",
+      "active": true,
+      "corridor": "Pune-Mumbai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 601,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 602,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 603,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 604,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 605,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 606,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 607,
+          "slotNumber": "Bay 7",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 608,
+          "slotNumber": "Bay 8",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 609,
+          "slotNumber": "Bay 9",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 610,
+          "slotNumber": "Bay 10",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "BluSmart / Magenta Supercharge - Manesar Hub",
+      "address": "NH 48 KM 45, IMT Manesar",
+      "city": "Gurugram",
+      "latitude": 28.3588,
+      "longitude": 76.9388,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 13.5,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 110,
+      "openingHours": "24/7 Open",
+      "amenities": "Café, Restrooms, Wi-Fi",
+      "active": true,
+      "corridor": "Delhi-Jaipur",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 701,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 702,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 703,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 704,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 705,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 706,
+          "slotNumber": "Bay 6",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 707,
+          "slotNumber": "Bay 7",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 708,
+          "slotNumber": "Bay 8",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "ChargeZone Superhub - Neemrana Highway Plaza",
+      "address": "NH 48 KM 120, Japanese Zone, Neemrana",
+      "city": "Neemrana",
+      "latitude": 27.9888,
+      "longitude": 76.3888,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2",
+      "totalSlots": 8,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 165,
+      "openingHours": "24/7 Open",
+      "amenities": "Resort Access, Restaurant, Restrooms, Kids Play Area",
+      "active": true,
+      "corridor": "Delhi-Jaipur",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 801,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 802,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 803,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 804,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 805,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 806,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 807,
+          "slotNumber": "Bay 7",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 808,
+          "slotNumber": "Bay 8",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Zeon Charging Superhub - Hosur Electronic City",
+      "address": "NH 48 KM 38, Sipcot Phase 1, Hosur",
+      "city": "Hosur",
+      "latitude": 12.7409,
+      "longitude": 77.8253,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 130,
+      "openingHours": "24/7 Open",
+      "amenities": "CCD, Restrooms, Wi-Fi",
+      "active": true,
+      "corridor": "Bengaluru-Chennai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 901,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 902,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 903,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 904,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 905,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 906,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 907,
+          "slotNumber": "Bay 7",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 908,
+          "slotNumber": "Bay 8",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Statiq Mega Hub - Mandya Expressway Rest Stop",
+      "address": "Bengaluru-Mysuru Expressway KM 65, Mandya Bypass",
+      "city": "Mandya",
+      "latitude": 12.5218,
+      "longitude": 76.8951,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2",
+      "totalSlots": 8,
+      "availableSlots": 5,
+      "available_slots": 5,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 92,
+      "openingHours": "24/7 Open",
+      "amenities": "Adyar Ananda Bhavan, Restrooms, Parking Plaza",
+      "active": true,
+      "corridor": "Bengaluru-Mysuru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1001,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1002,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1003,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 1004,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1005,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1006,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1007,
+          "slotNumber": "Bay 7",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 1008,
+          "slotNumber": "Bay 8",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Expressway Mega FastCharge Hub",
+      "address": "Yamuna Expressway KM 105",
+      "city": "Agra",
+      "latitude": 27.1767,
+      "longitude": 78.0081,
+      "parkingPricePerHour": 40,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 8,
+      "rating": 5,
+      "reviewCount": 0,
+      "openingHours": "24/7 Open",
+      "amenities": "Café, Restrooms, Free Wi-Fi, Lounge, CCTV",
+      "active": true,
+      "corridor": "Custom-Admin",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1101,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 1102,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1103,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1104,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1105,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1106,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1107,
+          "slotNumber": "Bay 7",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1108,
+          "slotNumber": "Bay 8",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "GreenCharge Superhub - Wakad",
+      "address": "Sayaji Hotel Campus, Wakad Flyover, Pune",
+      "city": "Pune",
+      "latitude": 18.5987,
+      "longitude": 73.7634,
+      "parkingPricePerHour": 40,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 8,
+      "available_slots": 8,
+      "total_slots": 10,
+      "rating": 4.6,
+      "reviewCount": 54,
+      "openingHours": "24/7 Open",
+      "amenities": "Restrooms, Cafe Coffee Day (CCD), Free Wi-Fi, Lounge",
+      "active": true,
+      "corridor": "Pune-Mumbai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1201,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1202,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1203,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1204,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1205,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1206,
+          "slotNumber": "Bay 6",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1207,
+          "slotNumber": "Bay 7",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        },
+        {
+          "id": 1208,
+          "slotNumber": "Bay 8",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "VoltPoint FastCharge - Baner",
+      "address": "High Street Balewadi, Baner, Pune",
+      "city": "Pune",
+      "latitude": 18.559,
+      "longitude": 73.7868,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 12.5,
+      "maxChargingSpeedKw": 60,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 5,
+      "available_slots": 5,
+      "total_slots": 8,
+      "rating": 4.4,
+      "reviewCount": 38,
+      "openingHours": "24/7 Open",
+      "amenities": "Balewadi High Street Shopping Mall, Food Court, ATM",
+      "active": true,
+      "corridor": "Pune-Mumbai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1301,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1302,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1303,
+          "slotNumber": "Bay 3",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1304,
+          "slotNumber": "Bay 4",
+          "chargerType": "Type 2 22kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "ElectriHub IT Park - Hinjewadi",
+      "address": "Phase 1 Hinjewadi Tech Park, Pune",
+      "city": "Pune",
+      "latitude": 18.5913,
+      "longitude": 73.7389,
+      "parkingPricePerHour": 50,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, CHAdeMO",
+      "totalSlots": 10,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 10,
+      "rating": 4.8,
+      "reviewCount": 82,
+      "openingHours": "24/7 Open",
+      "amenities": "Co-working Lounge, Starbucks, Supermarket, High Speed Wi-Fi",
+      "active": true,
+      "corridor": "Pune-Mumbai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1401,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1402,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1403,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1404,
+          "slotNumber": "Bay 4",
+          "chargerType": "CHAdeMO 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Tata Power MegaCharger - BKC",
+      "address": "G Block, Bandra Kurla Complex (BKC), Mumbai",
+      "city": "Mumbai",
+      "latitude": 19.0657,
+      "longitude": 72.8687,
+      "parkingPricePerHour": 80,
+      "chargingPricePerKwh": 16,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, CHAdeMO",
+      "totalSlots": 12,
+      "availableSlots": 9,
+      "available_slots": 9,
+      "total_slots": 12,
+      "rating": 4.9,
+      "reviewCount": 175,
+      "openingHours": "24/7 Open",
+      "amenities": "Jio World Drive Mall, Executive Lounge, High Speed Wi-Fi",
+      "active": true,
+      "corridor": "Pune-Mumbai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1501,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1502,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Jio-bp Pulse Highway Oasis - Panvel",
+      "address": "Mumbai-Pune Expressway KM 98, Near Panvel Toll",
+      "city": "Panvel",
+      "latitude": 18.9894,
+      "longitude": 73.1175,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 10,
+      "rating": 4.8,
+      "reviewCount": 145,
+      "openingHours": "24/7 Open",
+      "amenities": "CCD, Restrooms, High Speed Wi-Fi, Food Court",
+      "active": true,
+      "corridor": "Pune-Mumbai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1601,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1602,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1603,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1604,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Vrindavan Highway Oasis - Yamuna KM 102",
+      "address": "Yamuna Expressway KM 102, Vrindavan Cut",
+      "city": "Mathura",
+      "latitude": 27.565,
+      "longitude": 77.7,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.2,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 112,
+      "openingHours": "24/7 Open",
+      "amenities": "Vegetarian Food Court, Clean Restrooms, Souvenir Store",
+      "active": true,
+      "corridor": "Delhi-Agra",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1701,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1702,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Tata Power Taj Expressway Terminal - Agra North",
+      "address": "Expressway Interchange, Fatehabad Road, Agra",
+      "city": "Agra",
+      "latitude": 27.2038,
+      "longitude": 78.04,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 14.8,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 5,
+      "available_slots": 5,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 180,
+      "openingHours": "24/7 Open",
+      "amenities": "Taj View Lounge, Café, Free Wi-Fi, Restrooms",
+      "active": true,
+      "corridor": "Delhi-Agra",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1801,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1802,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "DLF CyberCity FastCharge Hub - Gurugram",
+      "address": "DLF Phase 2, Sector 24, CyberCity, Gurugram",
+      "city": "Gurugram",
+      "latitude": 28.495,
+      "longitude": 77.089,
+      "parkingPricePerHour": 40,
+      "chargingPricePerKwh": 15.5,
+      "maxChargingSpeedKw": 180,
+      "chargerTypes": "CCS2, CHAdeMO",
+      "totalSlots": 10,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 10,
+      "rating": 4.9,
+      "reviewCount": 260,
+      "openingHours": "24/7 Open",
+      "amenities": "CyberHub Cafes, Multi-cuisine dining, Restrooms",
+      "active": true,
+      "corridor": "Delhi-Jaipur",
+      "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 1901,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 1902,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Dharuhera Highway Oasis - NH 48 KM 70",
+      "address": "NH 48 KM 70, Near Dharuhera Industrial Area",
+      "city": "Dharuhera",
+      "latitude": 28.205,
+      "longitude": 76.79,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.7,
+      "reviewCount": 94,
+      "openingHours": "24/7 Open",
+      "amenities": "McDonalds, Restrooms, Convenience Store",
+      "active": true,
+      "corridor": "Delhi-Jaipur",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2001,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 2002,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 60kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Kotputli Mid-Way Supercharge Park - NH 48",
+      "address": "NH 48 KM 160, Kotputli Bypass Plaza",
+      "city": "Kotputli",
+      "latitude": 27.705,
+      "longitude": 76.195,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 118,
+      "openingHours": "24/7 Open",
+      "amenities": "Highway Dhaba & Restaurant, Clean Restrooms, AC Lounge",
+      "active": true,
+      "corridor": "Delhi-Jaipur",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2101,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 2102,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Shahpura Expressway EV Pitstop - NH 48",
+      "address": "NH 48 KM 210, Shahpura Toll Oasis",
+      "city": "Shahpura",
+      "latitude": 27.385,
+      "longitude": 75.96,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2",
+      "totalSlots": 8,
+      "availableSlots": 5,
+      "available_slots": 5,
+      "total_slots": 8,
+      "rating": 4.7,
+      "reviewCount": 88,
+      "openingHours": "24/7 Open",
+      "amenities": "Café, Restrooms, Wi-Fi",
+      "active": true,
+      "corridor": "Delhi-Jaipur",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2201,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Statiq Mega Station - Jaipur Amer Bypass",
+      "address": "NH 48 Entrance, Near Amer Fort Road, Jaipur",
+      "city": "Jaipur",
+      "latitude": 26.985,
+      "longitude": 75.85,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 8,
+      "available_slots": 8,
+      "total_slots": 10,
+      "rating": 4.9,
+      "reviewCount": 210,
+      "openingHours": "24/7 Open",
+      "amenities": "Rajasthani Restaurant, Handicraft Lounge, Restrooms",
+      "active": true,
+      "corridor": "Delhi-Jaipur",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2301,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 2302,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Electronic City Phase 1 EV Hub - Bengaluru",
+      "address": "Hosur Road, Near Toll Plaza, Electronic City, Bengaluru",
+      "city": "Bengaluru",
+      "latitude": 12.845,
+      "longitude": 77.66,
+      "parkingPricePerHour": 35,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 10,
+      "rating": 4.8,
+      "reviewCount": 195,
+      "openingHours": "24/7 Open",
+      "amenities": "Tech Lounge, Starbucks, Clean Restrooms",
+      "active": true,
+      "corridor": "Bengaluru-Chennai",
+      "imageUrl": "https://images.unsplash.com/photo-1571127236794-81c0bbfe1ce3?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2401,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Krishnagiri Highway Food Plaza - NH 48 KM 90",
+      "address": "NH 48 KM 90, Krishnagiri Toll Oasis",
+      "city": "Krishnagiri",
+      "latitude": 12.525,
+      "longitude": 78.215,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 140,
+      "openingHours": "24/7 Open",
+      "amenities": "Saravana Bhavan, A2B, Restrooms, Wi-Fi",
+      "active": true,
+      "corridor": "Bengaluru-Chennai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2501,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "Ambur Express Star EV Pitstop - NH 48",
+      "address": "NH 48 KM 180, Ambur Bypass",
+      "city": "Ambur",
+      "latitude": 12.79,
+      "longitude": 78.715,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2",
+      "totalSlots": 6,
+      "availableSlots": 4,
+      "available_slots": 4,
+      "total_slots": 6,
+      "rating": 4.7,
+      "reviewCount": 105,
+      "openingHours": "24/7 Open",
+      "amenities": "Famous Biryani Hubs, Restrooms, Refreshments",
+      "active": true,
+      "corridor": "Bengaluru-Chennai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2601,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "Vellore Golden Quadrilateral Supercharger",
+      "address": "NH 48 KM 215, Near Golden Temple Bypass, Vellore",
+      "city": "Vellore",
+      "latitude": 12.92,
+      "longitude": 79.135,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.8,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 0,
+      "available_slots": 0,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 178,
+      "openingHours": "24/7 Open",
+      "amenities": "Pure Veg Dining, Restrooms, Tourist Assistance",
+      "active": true,
+      "corridor": "Bengaluru-Chennai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2701,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": false,
+          "status": "OCCUPIED"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "Sriperumbudur Highway FastCharge - NH 48",
+      "address": "NH 48 KM 305, Industrial Corridor, Sriperumbudur",
+      "city": "Sriperumbudur",
+      "latitude": 12.975,
+      "longitude": 79.945,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, CHAdeMO",
+      "totalSlots": 8,
+      "availableSlots": 5,
+      "available_slots": 5,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 132,
+      "openingHours": "24/7 Open",
+      "amenities": "Food Plaza, Restrooms, Wi-Fi",
+      "active": true,
+      "corridor": "Bengaluru-Chennai",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2801,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "name": "Guindy Tech Park Mega EV Terminal - Chennai",
+      "address": "GST Road, Near Kathipara Junction, Guindy, Chennai",
+      "city": "Chennai",
+      "latitude": 13.0067,
+      "longitude": 80.2025,
+      "parkingPricePerHour": 40,
+      "chargingPricePerKwh": 15.5,
+      "maxChargingSpeedKw": 180,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 10,
+      "rating": 4.9,
+      "reviewCount": 224,
+      "openingHours": "24/7 Open",
+      "amenities": "Metro Access, Tech Park Cafes, Restrooms, AC Lounge",
+      "active": true,
+      "corridor": "Bengaluru-Chennai",
+      "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 2901,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "Kengeri Metro Expressway Gateway - Bengaluru",
+      "address": "Mysuru Road, Near Kengeri Metro Terminal, Bengaluru",
+      "city": "Bengaluru",
+      "latitude": 12.908,
+      "longitude": 77.485,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 165,
+      "openingHours": "24/7 Open",
+      "amenities": "Metro Interchange, Coffee Lounge, Restrooms",
+      "active": true,
+      "corridor": "Bengaluru-Mysuru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3001,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "name": "Bidadi Industrial Corridor Superhub",
+      "address": "Bengaluru-Mysuru Expressway KM 35, Bidadi Bypass",
+      "city": "Bidadi",
+      "latitude": 12.795,
+      "longitude": 77.385,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.7,
+      "reviewCount": 92,
+      "openingHours": "24/7 Open",
+      "amenities": "Thatte Idli Food Plaza, Clean Restrooms, Parking",
+      "active": true,
+      "corridor": "Bengaluru-Mysuru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3101,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "name": "Ramanagara Silk City EV Plaza",
+      "address": "Bengaluru-Mysuru Expressway KM 50, Ramanagara Rest Area",
+      "city": "Ramanagara",
+      "latitude": 12.725,
+      "longitude": 77.28,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14.2,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 5,
+      "available_slots": 5,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 110,
+      "openingHours": "24/7 Open",
+      "amenities": "Kamat Lokaruchi, Restrooms, Scenic View Lounge",
+      "active": true,
+      "corridor": "Bengaluru-Mysuru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3201,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "name": "Channapatna Crafts & Food Oasis",
+      "address": "Bengaluru-Mysuru Expressway KM 60, Channapatna Toll Cut",
+      "city": "Channapatna",
+      "latitude": 12.65,
+      "longitude": 77.2,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.7,
+      "reviewCount": 88,
+      "openingHours": "24/7 Open",
+      "amenities": "Wooden Toy Boutiques, Food Plaza, Restrooms",
+      "active": true,
+      "corridor": "Bengaluru-Mysuru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3301,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "name": "Srirangapatna Heritage EV Bay",
+      "address": "Bengaluru-Mysuru Expressway KM 125, Near Kaveri Bridge, Srirangapatna",
+      "city": "Srirangapatna",
+      "latitude": 12.42,
+      "longitude": 76.695,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14.2,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 135,
+      "openingHours": "24/7 Open",
+      "amenities": "Kaveri Riverfront Cafe, Restrooms, Tourist Info",
+      "active": true,
+      "corridor": "Bengaluru-Mysuru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3401,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "name": "Mysuru Outer Ring Road Supercharge",
+      "address": "Near Columbia Asia Hospital Junction, Ring Road, Mysuru",
+      "city": "Mysuru",
+      "latitude": 12.335,
+      "longitude": 76.655,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 5,
+      "available_slots": 5,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 150,
+      "openingHours": "24/7 Open",
+      "amenities": "Coffee Lounge, Restrooms, Free Wi-Fi",
+      "active": true,
+      "corridor": "Bengaluru-Mysuru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3501,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "name": "Kolad Kundalika Riverfront EV Hub - NH 66",
+      "address": "Mumbai-Goa Highway NH 66, Near Kundalika River Bridge, Kolad",
+      "city": "Kolad",
+      "latitude": 18.42,
+      "longitude": 73.21,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.7,
+      "reviewCount": 98,
+      "openingHours": "24/7 Open",
+      "amenities": "Riverfront Dhaba, Restrooms, Adventure Sports Lounge",
+      "active": true,
+      "corridor": "Mumbai-Goa",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3601,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "name": "Chiplun Ghat Highway Plaza - NH 66",
+      "address": "NH 66 KM 240, Parshuram Ghat Foothills, Chiplun",
+      "city": "Chiplun",
+      "latitude": 17.53,
+      "longitude": 73.515,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 142,
+      "openingHours": "24/7 Open",
+      "amenities": "Konkani Food Plaza, Clean Washrooms, Scenic Mountain View",
+      "active": true,
+      "corridor": "Mumbai-Goa",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3701,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "name": "Kankavli Konkan Gateway EV Stop - NH 66",
+      "address": "NH 66 KM 410, Near Kankavli Bus Terminal",
+      "city": "Kankavli",
+      "latitude": 16.27,
+      "longitude": 73.71,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.7,
+      "reviewCount": 86,
+      "openingHours": "24/7 Open",
+      "amenities": "Malvani Thali Restaurant, Restrooms, Refreshments",
+      "active": true,
+      "corridor": "Mumbai-Goa",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3801,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "name": "Mapusa North Goa FastCharge Hub - NH 66",
+      "address": "NH 66, Karaswada Junction, Mapusa, Goa",
+      "city": "Mapusa",
+      "latitude": 15.59,
+      "longitude": 73.815,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 10,
+      "rating": 4.9,
+      "reviewCount": 230,
+      "openingHours": "24/7 Open",
+      "amenities": "Beach Shuttle Desk, Bakery & Cafe, Restrooms, Wi-Fi",
+      "active": true,
+      "corridor": "Mumbai-Goa",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 3901,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "name": "Panaji Waterfront Smart EV Terminal - Goa",
+      "address": "DB Marg, Near Mandovi River Promenade, Panaji, Goa",
+      "city": "Panaji",
+      "latitude": 15.4989,
+      "longitude": 73.8278,
+      "parkingPricePerHour": 40,
+      "chargingPricePerKwh": 16,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 8,
+      "available_slots": 8,
+      "total_slots": 10,
+      "rating": 4.9,
+      "reviewCount": 285,
+      "openingHours": "24/7 Open",
+      "amenities": "River Cruise Promenade, AC Lounge, Restrooms, Free Wi-Fi",
+      "active": true,
+      "corridor": "Mumbai-Goa",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4001,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "name": "Shamshabad Airport Express EV Hub - Hyderabad",
+      "address": "Airport Approach Road, RGIA Terminal Zone, Shamshabad, Hyderabad",
+      "city": "Hyderabad",
+      "latitude": 17.2403,
+      "longitude": 78.4294,
+      "parkingPricePerHour": 40,
+      "chargingPricePerKwh": 15.5,
+      "maxChargingSpeedKw": 180,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 12,
+      "availableSlots": 9,
+      "available_slots": 9,
+      "total_slots": 12,
+      "rating": 4.9,
+      "reviewCount": 290,
+      "openingHours": "24/7 Open",
+      "amenities": "Airport Transit Lounge, Starbucks, Restrooms, Security",
+      "active": true,
+      "corridor": "Hyderabad-Bengaluru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4101,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "name": "Jadcherla Highway Oasis - NH 44 KM 85",
+      "address": "NH 44 KM 85, Jadcherla Toll Plaza",
+      "city": "Jadcherla",
+      "latitude": 16.765,
+      "longitude": 78.14,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.7,
+      "reviewCount": 104,
+      "openingHours": "24/7 Open",
+      "amenities": "Highway Food Court, Restrooms, Convenience Store",
+      "active": true,
+      "corridor": "Hyderabad-Bengaluru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4201,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "name": "Kurnool Tungabhadra FastCharge Hub - NH 44",
+      "address": "NH 44 KM 210, Tungabhadra River Bridge, Kurnool",
+      "city": "Kurnool",
+      "latitude": 15.8281,
+      "longitude": 78.0373,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 8,
+      "available_slots": 8,
+      "total_slots": 10,
+      "rating": 4.8,
+      "reviewCount": 165,
+      "openingHours": "24/7 Open",
+      "amenities": "Andhra Mess, AC Waiting Lounge, Clean Restrooms",
+      "active": true,
+      "corridor": "Hyderabad-Bengaluru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4301,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "name": "Anantapur Midpoint EV Park - NH 44",
+      "address": "NH 44 KM 355, Anantapur Bypass Food Mall",
+      "city": "Anantapur",
+      "latitude": 14.6819,
+      "longitude": 77.6006,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 120,
+      "openingHours": "24/7 Open",
+      "amenities": "Coffee House, Multi-cuisine dining, Restrooms",
+      "active": true,
+      "corridor": "Hyderabad-Bengaluru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4401,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "name": "Chikballapur Hills EV Stop - NH 44",
+      "address": "NH 44 KM 490, Nandi Hills Foothills, Chikballapur",
+      "city": "Chikballapur",
+      "latitude": 13.4325,
+      "longitude": 77.7275,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.8,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.9,
+      "reviewCount": 195,
+      "openingHours": "24/7 Open",
+      "amenities": "Nandi Hills View Cafe, Clean Washrooms, High Speed Wi-Fi",
+      "active": true,
+      "corridor": "Hyderabad-Bengaluru",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4501,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "name": "Hebbal Bengaluru Gateway Supercharge",
+      "address": "Bellary Road, Near Hebbal Flyover, Bengaluru",
+      "city": "Bengaluru",
+      "latitude": 13.0358,
+      "longitude": 77.597,
+      "parkingPricePerHour": 35,
+      "chargingPricePerKwh": 15,
+      "maxChargingSpeedKw": 180,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 7,
+      "available_slots": 7,
+      "total_slots": 10,
+      "rating": 4.9,
+      "reviewCount": 245,
+      "openingHours": "24/7 Open",
+      "amenities": "Airport Highway Oasis, AC Lounge, Restrooms",
+      "active": true,
+      "corridor": "Hyderabad-Bengaluru",
+      "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4601,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 180kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "name": "CTM Expressway Toll Plaza Ahmedabad",
+      "address": "National Expressway 1 Entrance, CTM Cross Roads, Ahmedabad",
+      "city": "Ahmedabad",
+      "latitude": 22.985,
+      "longitude": 72.645,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 150,
+      "openingHours": "24/7 Open",
+      "amenities": "Expressway Food Plaza, Restrooms, Parking Plaza",
+      "active": true,
+      "corridor": "Ahmedabad-Vadodara",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4701,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name": "Nadiad Mid-Way Rest Area - NE 1 KM 45",
+      "address": "National Expressway 1 KM 45, Nadiad Bypass Oasis",
+      "city": "Nadiad",
+      "latitude": 22.69,
+      "longitude": 72.86,
+      "parkingPricePerHour": 20,
+      "chargingPricePerKwh": 14,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "CCS2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.7,
+      "reviewCount": 110,
+      "openingHours": "24/7 Open",
+      "amenities": "Gujarati Farsan Cafe, Restrooms, Convenience Store",
+      "active": true,
+      "corridor": "Ahmedabad-Vadodara",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4801,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 120kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "name": "Anand Milk City Superhub - NE 1 KM 70",
+      "address": "National Expressway 1 KM 70, Near Amul Dairy Campus, Anand",
+      "city": "Anand",
+      "latitude": 22.56,
+      "longitude": 72.95,
+      "parkingPricePerHour": 25,
+      "chargingPricePerKwh": 14.5,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 10,
+      "availableSlots": 8,
+      "available_slots": 8,
+      "total_slots": 10,
+      "rating": 4.9,
+      "reviewCount": 220,
+      "openingHours": "24/7 Open",
+      "amenities": "Amul Parlour, Cafeteria, Restrooms, AC Lounge",
+      "active": true,
+      "corridor": "Ahmedabad-Vadodara",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 4901,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "name": "Vadodara Golden Cross Terminal - NE 1",
+      "address": "Expressway Terminal, Golden Chokdi, Vadodara",
+      "city": "Vadodara",
+      "latitude": 22.31,
+      "longitude": 73.18,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 14.8,
+      "maxChargingSpeedKw": 150,
+      "chargerTypes": "CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 6,
+      "available_slots": 6,
+      "total_slots": 8,
+      "rating": 4.8,
+      "reviewCount": 165,
+      "openingHours": "24/7 Open",
+      "amenities": "Restaurant, Free Wi-Fi, Restrooms, Tourist Desk",
+      "active": true,
+      "corridor": "Ahmedabad-Vadodara",
+      "imageUrl": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+      "slots": [
+        {
+          "id": 5001,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "name": "g",
+      "address": "Mumbai-Pune Expressway Food Plaza",
+      "city": "Lonavala",
+      "latitude": 18.7512,
+      "longitude": 73.4088,
+      "parkingPricePerHour": 30,
+      "chargingPricePerKwh": 18,
+      "maxChargingSpeedKw": 120,
+      "chargerTypes": "Dual CCS2, Type 2",
+      "totalSlots": 8,
+      "availableSlots": 8,
+      "available_slots": 8,
+      "total_slots": 8,
+      "rating": 5,
+      "reviewCount": 0,
+      "openingHours": "24/7 Open",
+      "amenities": "Cafeteria / Coffee Shop, Clean Restrooms, High-Speed Free Wi-Fi, AC EV Waiting Lounge, 24/7 CCTV & Security",
+      "active": true,
+      "corridor": "Pune-Mumbai",
+      "imageUrl": "https://res.cloudinary.com/ds7dkwyfp/image/upload/v1792561957/smartev_stations/ml58dzv68hqbwgimb43n.jpg",
+      "slots": [
+        {
+          "id": 5101,
+          "slotNumber": "Bay 1",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 5102,
+          "slotNumber": "Bay 2",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 5103,
+          "slotNumber": "Bay 3",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 5104,
+          "slotNumber": "Bay 4",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 5105,
+          "slotNumber": "Bay 5",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 5106,
+          "slotNumber": "Bay 6",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 5107,
+          "slotNumber": "Bay 7",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        },
+        {
+          "id": 5108,
+          "slotNumber": "Bay 8",
+          "chargerType": "CCS2 150kW",
+          "isAvailable": true,
+          "status": "AVAILABLE"
+        }
+      ],
+      "isNewlyAdded": true
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin Officer",
+      "email": "admin@smartev.com",
+      "password": "admin123",
+      "role": "ROLE_ADMIN",
+      "phone": "+91 98765 43210"
+    },
+    {
+      "id": 2,
+      "name": "Rahul Sharma",
+      "email": "driver@smartev.com",
+      "password": "password123",
+      "role": "ROLE_DRIVER",
+      "phone": "+91 91234 56789"
+    },
+    {
+      "id": 3,
+      "name": "user",
+      "email": "user@smartev.com",
+      "password": "user123",
+      "role": "ROLE_DRIVER",
+      "phone": "+91 98765 00000"
+    },
+    {
+      "id": 4,
+      "name": "hj",
+      "email": "hj@gmail.com",
+      "password": "123456",
+      "phone": "9898989898",
+      "role": "ROLE_DRIVER"
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1792564033256,
+      "bookingReference": "SMART-EV-MVHQCGGG",
+      "stationId": 27,
+      "stationName": "Vellore Golden Quadrilateral Supercharger",
+      "stationAddress": "NH 48 KM 215, Near Golden Temple Bypass, Vellore, Vellore",
+      "slotNumber": "Bay 1",
+      "chargerType": "CCS2 150kW",
+      "userId": 3,
+      "userName": "user",
+      "userEmail": "user@smartev.com",
+      "userPhone": "+91 98765 00000",
+      "vehicleModel": "Tata Nexon EV Max",
+      "vehicleNumber": "MH 12 EV 8899",
+      "bookingDate": "2026-10-21",
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "totalHours": 1,
+      "chargingKwh": 25,
+      "totalAmount": 200,
+      "status": "CONFIRMED",
+      "paymentStatus": "PAID",
+      "paymentMethod": "RAZORPAY_UPI",
+      "razorpayPaymentId": "pay_RPZ64037703",
+      "createdAt": "2026-10-21T06:27:18.736Z"
+    },
+    {
+      "id": 1792563956975,
+      "bookingReference": "SMART-EV-MVHQATRG",
+      "stationId": 1,
+      "stationName": "Tata Power FastCharge - Greater Noida Hub",
+      "stationAddress": "Yamuna Expressway KM 14, Sector 150, Greater Noida",
+      "slotNumber": "Bay 5",
+      "chargerType": "CCS2 60kW",
+      "userId": 4,
+      "userName": "hj",
+      "userEmail": "hj@gmail.com",
+      "userPhone": "9898989898",
+      "vehicleModel": "Tata Nexon EV Max",
+      "vehicleNumber": "MH 12 EV 8899",
+      "bookingDate": "2026-10-21",
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "totalHours": 1,
+      "chargingKwh": 25,
+      "totalAmount": 200,
+      "status": "CONFIRMED",
+      "paymentStatus": "PAID",
+      "paymentMethod": "RAZORPAY_UPI",
+      "razorpayPaymentId": "pay_RPZ63961623",
+      "createdAt": "2026-10-21T06:26:02.668Z"
+    },
+    {
+      "id": 1792561889810,
+      "bookingReference": "SMART-EV-MVHP2J2I",
+      "stationId": 3,
+      "stationName": "Statiq Supercharge Park - Mathura Expressway",
+      "stationAddress": "Yamuna Expressway KM 88, Milestone Food Plaza, Mathura",
+      "slotNumber": "Bay 7",
+      "chargerType": "Type 2 22kW",
+      "userName": "Harsh Khairnar",
+      "userEmail": "user@smartev.com",
+      "userPhone": "+91 98765 00000",
+      "vehicleModel": "Tata Punch EV",
+      "vehicleNumber": "MH 12 EV 8899",
+      "bookingDate": "2026-10-21",
+      "startTime": "18:00:00",
+      "endTime": "19:00:00",
+      "totalHours": 1,
+      "chargingKwh": 25,
+      "totalAmount": 150,
+      "status": "CONFIRMED",
+      "paymentStatus": "PAID",
+      "paymentMethod": "RAZORPAY_UPI",
+      "razorpayPaymentId": "pay_RPZ61894892",
+      "createdAt": "2026-10-21T05:51:35.946Z"
+    },
+    {
+      "id": 1792561719661,
+      "bookingReference": "SMART-EV-MVHOYR1V",
+      "stationId": 11,
+      "stationName": "GreenCharge Wakad",
+      "stationAddress": "Sayaji Hotel Campus, Wakad Flyover, Pune",
+      "slotNumber": "Bay 1",
+      "chargerType": "CCS2 120kW",
+      "userName": "Kishor Khairnar",
+      "userEmail": "kishor.khairnar@gmail.com",
+      "userPhone": "+91 99223 88441",
+      "vehicleModel": "Tata Nexon EV Empowered+",
+      "vehicleNumber": "MH 14 EV 9900",
+      "bookingDate": "2026-10-21",
+      "startTime": "16:00:00",
+      "endTime": "17:00:00",
+      "totalHours": 1,
+      "chargingKwh": 25,
+      "totalAmount": 200,
+      "status": "CONFIRMED",
+      "paymentStatus": "PAID",
+      "paymentMethod": "RAZORPAY_UPI",
+      "razorpayPaymentId": "pay_RPZ_LIVE_TEST_789",
+      "createdAt": "2026-10-21T05:48:39.667Z"
+    }
+  ],
+  "reviews": {
+    "1": [
+      {
+        "id": 1,
+        "rating": 5,
+        "comment": "Ultra-fast 150kW charger charged my Nexon EV from 20% to 80% in 28 mins! Clean washrooms and great café.",
+        "authorName": "Vikas Mehra",
+        "date": "2026-10-12"
+      }
+    ],
+    "2": [
+      {
+        "id": 2,
+        "rating": 5,
+        "comment": "Jewar toll plaza stop is fantastic. Zero waiting time, Starbucks next door.",
+        "authorName": "Ananya Iyer",
+        "date": "2026-10-13"
+      }
+    ]
+  },
+  "holds": {
+    "hold_1791918744261": {
+      "bookingId": 1791918744264,
+      "holdId": "hold_1791918744261",
+      "stationId": 1,
+      "slotId": 101,
+      "slotNumber": "Bay 1",
+      "vehicleId": 1,
+      "bookingDate": "2026-10-14",
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "chargingKwh": 25,
+      "totalAmount": 407.5,
+      "razorpayOrderId": "order_9t3r3teh",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1791918744264
+    },
+    "hold_1791919027708": {
+      "bookingId": 1791919027712,
+      "holdId": "hold_1791919027708",
+      "stationId": 1,
+      "slotId": 102,
+      "slotNumber": "Bay 2",
+      "vehicleId": 1,
+      "bookingDate": "2026-10-13",
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "chargingKwh": 25,
+      "totalAmount": 407.5,
+      "razorpayOrderId": "order_i9tj7n7y",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1791919027712
+    },
+    "hold_1791919171408": {
+      "bookingId": 1791919171408,
+      "holdId": "hold_1791919171408",
+      "stationId": 1,
+      "slotId": 104,
+      "slotNumber": "Bay 4",
+      "vehicleId": 1,
+      "bookingDate": "2026-10-13",
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "chargingKwh": 25,
+      "totalAmount": 407.5,
+      "razorpayOrderId": "order_i2c12ci0",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1791919171408
+    },
+    "hold_1791920500186": {
+      "bookingId": 1791920500187,
+      "holdId": "hold_1791920500186",
+      "stationId": 2,
+      "slotId": 201,
+      "slotNumber": "Bay 1",
+      "vehicleId": 1,
+      "bookingDate": "2026-10-13",
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "chargingKwh": 25,
+      "totalAmount": 412.5,
+      "razorpayOrderId": "order_yl8lzqa2",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1791920500187
+    },
+    "hold_1792560994114": {
+      "bookingId": 1792560994114,
+      "holdId": "hold_1792560994114",
+      "stationId": 10,
+      "slotId": 1008,
+      "slotNumber": "Bay 8",
+      "vehicleId": 1,
+      "bookingDate": "2026-10-21",
+      "startTime": "19:00:00",
+      "endTime": "20:00:00",
+      "chargingKwh": 25,
+      "totalAmount": 392.5,
+      "razorpayOrderId": "order_9dratm2c",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1792560994114
+    },
+    "hold_1792561719661": {
+      "bookingId": 1792561719661,
+      "holdId": "hold_1792561719661",
+      "stationId": 11,
+      "stationName": "GreenCharge Wakad",
+      "stationAddress": "Sayaji Hotel Campus, Wakad Flyover, Pune",
+      "slotId": 1101,
+      "slotNumber": "Bay 1",
+      "chargerType": "CCS2 120kW",
+      "vehicleId": 1,
+      "userName": "Kishor Khairnar",
+      "userEmail": "kishor.khairnar@gmail.com",
+      "userPhone": "+91 99223 88441",
+      "vehicleModel": "Tata Nexon EV Empowered+",
+      "vehicleNumber": "MH 14 EV 9900",
+      "bookingDate": "2026-10-21",
+      "startTime": "16:00:00",
+      "endTime": "17:00:00",
+      "totalHours": 1,
+      "chargingKwh": 25,
+      "totalAmount": 435,
+      "razorpayOrderId": "order_1e3wbg1n",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1792561719661
+    },
+    "hold_1792561889810": {
+      "bookingId": 1792561889810,
+      "holdId": "hold_1792561889810",
+      "stationId": 3,
+      "stationName": "Statiq Supercharge Park - Mathura Expressway",
+      "stationAddress": "Yamuna Expressway KM 88, Milestone Food Plaza, Mathura",
+      "slotId": 307,
+      "slotNumber": "Bay 7",
+      "chargerType": "Type 2 22kW",
+      "vehicleId": 1,
+      "userName": "Harsh Khairnar",
+      "userEmail": "user@smartev.com",
+      "userPhone": "+91 98765 00000",
+      "vehicleModel": "Tata Punch EV",
+      "vehicleNumber": "MH 12 EV 8899",
+      "bookingDate": "2026-10-21",
+      "startTime": "18:00:00",
+      "endTime": "19:00:00",
+      "totalHours": 1,
+      "chargingKwh": 25,
+      "totalAmount": 395,
+      "razorpayOrderId": "order_y7apuelz",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1792561889810
+    },
+    "hold_1792563956975": {
+      "bookingId": 1792563956975,
+      "holdId": "hold_1792563956975",
+      "stationId": 1,
+      "stationName": "Tata Power FastCharge - Greater Noida Hub",
+      "stationAddress": "Yamuna Expressway KM 14, Sector 150, Greater Noida",
+      "slotId": 105,
+      "slotNumber": "Bay 5",
+      "chargerType": "CCS2 60kW",
+      "vehicleId": 1,
+      "userId": 4,
+      "userName": "hj",
+      "userEmail": "hj@gmail.com",
+      "userPhone": "9898989898",
+      "vehicleModel": "Tata Nexon EV Max",
+      "vehicleNumber": "MH 12 EV 8899",
+      "bookingDate": "2026-10-21",
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "totalHours": 1,
+      "chargingKwh": 25,
+      "totalAmount": 407.5,
+      "razorpayOrderId": "order_d1eb74ua",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1792563956976
+    },
+    "hold_1792564033256": {
+      "bookingId": 1792564033256,
+      "holdId": "hold_1792564033256",
+      "stationId": 27,
+      "stationName": "Vellore Golden Quadrilateral Supercharger",
+      "stationAddress": "NH 48 KM 215, Near Golden Temple Bypass, Vellore, Vellore",
+      "slotId": 2701,
+      "slotNumber": "Bay 1",
+      "chargerType": "CCS2 150kW",
+      "vehicleId": 1,
+      "userId": 3,
+      "userName": "user",
+      "userEmail": "user@smartev.com",
+      "userPhone": "+91 98765 00000",
+      "vehicleModel": "Tata Nexon EV Max",
+      "vehicleNumber": "MH 12 EV 8899",
+      "bookingDate": "2026-10-21",
+      "startTime": "14:00:00",
+      "endTime": "15:00:00",
+      "totalHours": 1,
+      "chargingKwh": 25,
+      "totalAmount": 407.5,
+      "razorpayOrderId": "order_411uc26d",
+      "holdExpiresInSeconds": 600,
+      "createdAt": 1792564033256
+    }
+  },
+  "totalRevenue": 84500
+}
